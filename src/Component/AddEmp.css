@@ -1,0 +1,9 @@
+#leaveForm {
+    display: flex;
+    align-items: center;
+}
+
+#leabe{
+    padding: 10px;
+    padding-left: 0px;
+}
