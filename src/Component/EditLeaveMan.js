@@ -1,157 +1,218 @@
-import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './ManagerView.css';
+import './AddEmp.css';
+import './EditLeaveMan.css';
+
+
 
 const EditLeaveMan = (props) => {
-
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
-  const [data, setData] = useState(null)
-  const [print, setPrint] = useState(false)
-  const [mid, setMid] = useState(3);
-
-  function getData(val) {
-    console.warn(val.target.value)
-    setData(val.target.value)
-    setMid(val.target.value)
-    setPrint(false)
-  }
-
-  function setManagerId() {
-    setMid(mid)
-  }
+    const [submit, setSubmit] = useState(null);
+    const [inputs, setInputs] = useState({});
 
 
+    const LeaveId = localStorage.getItem('LID');
+    const EmployeeId = localStorage.getItem('EID');
+    const EmplLevel = localStorage.getItem('ELEVEL');
+    const ManagerId = localStorage.getItem('MID');
+    const LeavesInHand = localStorage.getItem('LIH');
+    const LeaveStart = localStorage.getItem('LS');
+    const LeaveEnd = localStorage.getItem('LE');
+    const LeaveType = localStorage.getItem('LT');
+    const Reason = localStorage.getItem('RE');
+    const LeaveStatus = localStorage.getItem('LSTATUS');
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
-  useEffect(() => {
-    //const mid1 = mid;
-    //const baseUrl = 'http://localhost:12242/api/Leavelms/managerid/${mid}'
-    fetch(`http://localhost:12242/api/Leavelms/${mid}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [mid])
+    // LeaveStart1 = new Date(LeaveStart.getFullYear(), LeaveStart.getMonth(), LeaveStart.getDate());
+    let LeaveStart1 = LeaveStart.slice(0, 10);
+    let LeaveEnd1 = LeaveEnd.slice(0, 10);
+
+    const handleChange = (event) => {
+        const name = event.target.id;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
+    }
+
+    /*    const UpdateLeave = (e) => {
+           e.preventDefault();
+           const data = {
+               lid: LeaveId,
+               employeeId: EmployeeId,
+               emplLevel: EmplLevel,
+               managerId: ManagerId,
+               leavesInHand: LeavesInHand,
+               leaveStart: LeaveStart,
+               leaveEnd: LeaveEnd,
+               leaveType: LeaveType,
+               reason: Reason,
+               leaveStatus: "approved"
+           };
+           const url = 'http://localhost:3000/api/Leavelms/UpdateLeave';
+           axios.put(url, data)
+           .then((result) => {
+               props.history.push('/AllEmp');
+           });
+   
+       }
+    */
+    /* componentDidMount() {
+        // Simple PUT request with a JSON body using fetch
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'React PUT Request Example' })
+        };
+        fetch('https://jsonplaceholder.typicode.com/posts/1', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+    } */
 
 
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
+    const handleSubmitApprove = (/* event */) => {
+        // event.preventDefault();
+        // alert(inputs.desc);
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lid: LeaveId,
+                employeeId: EmployeeId,
+                emplLevel: EmplLevel,
+                managerId: ManagerId,
+                leavesInHand: LeavesInHand,
+                leaveStart: LeaveStart,
+                leaveEnd: LeaveEnd,
+                leaveType: LeaveType,
+                reason: Reason,
+                leaveStatus: "approved"
+            })
+        };
+        fetch(`http://localhost:12242/api/Leavelms/${LeaveId}`, requestOptions)
+            .then(response => response.json())
+            .then(setSubmit(1));
+
+        /* const requestOptions = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer my-token'
+            },
+            body: JSON.stringify({
+                lid: inputs.lid,
+                employeeId: inputs.employeeId,
+                emplLevel: inputs.emplLevel,
+                managerId: inputs.managerId,
+                leavesInHand: inputs.leavesInHand,
+                leaveStart: inputs.leaveStart,
+                leaveEnd: inputs.leaveEnd,
+                leaveType: inputs.leaveType,
+                reason: inputs.reason,
+                leaveStatus: inputs.leaveStatus
+
+            })
+        };
+        fetch(`http://localhost:12242/api/Leavelms/${inputs.lid}`, requestOptions)
+            .then(response => response.json())
+            .then(setSubmit(1)); */
+
+    }
+
+    const handleSubmitReject = (/* event */) => {
+        // event.preventDefault();
+        // alert(inputs.desc);
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                lid: LeaveId,
+                employeeId: EmployeeId,
+                emplLevel: EmplLevel,
+                managerId: ManagerId,
+                leavesInHand: LeavesInHand,
+                leaveStart: LeaveStart,
+                leaveEnd: LeaveEnd,
+                leaveType: LeaveType,
+                reason: Reason,
+                leaveStatus: "rejected"
+            })
+        };
+        fetch(`http://localhost:12242/api/Leavelms/${LeaveId}`, requestOptions)
+            .then(response => response.json())
+            .then(setSubmit(1));
+
+    }
 
     return (
-      <div>
-        <h1>Edit Leave Manager</h1>
         <div>
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+            <h1>UPDATE</h1>
+            <br /><br />
+            <div class="container" id="leaveForm">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+                <form>
 
 
-          <br /><br />
+                    
+
+                    <dl class="row">
+                        <dt class="col-sm-9">Leave ID</dt>
+                        <dd class="col-sm-1">{LeaveId}</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9">Employee ID</dt>
+                        <dd class="col-sm-1">{EmployeeId}</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9">Employee Level</dt>
+                        <dd class="col-sm-1">{EmplLevel}</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9">Manager ID</dt>
+                        <dd class="col-sm-1">{ManagerId}</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9">Leaves in hand</dt>
+                        <dd class="col-sm-1">{LeavesInHand}</dd>
+                    </dl>
+                    <blockquote class="blockquote">
+                    <dl class="row">
+                    <mark>
+                    <p><strong>Leave Start : {LeaveStart1}</strong></p></mark>
+                    </dl>
+                    <dl class="row"><mark>
+                    <p><strong>Leave End : {LeaveEnd1}</strong></p></mark>
+                    </dl> 
+                    </blockquote>
+
+                    <dl class="row">
+                        
+                        <dt class="col-sm-9">Leave Type: </dt>
+                        <dd class="col-sm-3">{LeaveType}</dd>
+                    </dl>
+                        
+
+                    <dl class="row">
+                        <dt class="col-sm-9">Reason: </dt>
+                        <dd class="col-sm-3">{Reason}</dd>
+                    </dl>
+
+                       
+
+                        <button type="submit" onClick={handleSubmitApprove} class="btn btn-success">APPROVE</button>
+
+                        <button type="submit" onClick={handleSubmitReject} class="btn btn-danger">REJECT</button>
 
 
-          {/* <input type="text" id="managerID1" onChange={handleChange}></input><br />
-            <button type="submit" class="btn btn-dark">Fetch</button> */}
-
-          <div class="container-sm">
-
-            <label class="col-6 col-sm-2"><b>Enter Leave ID</b></label>
-            <input class="col-6 col-sm-1" type="text" onChange={getData} /> <br />
-            <button class="col-6 col-sm-3 btn-warning" onClick={() => setPrint(true)} >Fetch Leave Data</button>
-
-          </div>
-
-          <br /><br />
-
-          <table class="table table-striped table-dark">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Leave ID</th>
-                <th scope="col">Employee ID</th>
-                <th scope="col">Level</th>
-                <th scope="col">Manager ID</th>
-                <th scope="col">Leaves in hand</th>
-                <th scope="col">Leave Start</th>
-                <th scope="col">Leave End</th>
-                <th scope="col">Leave Type</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Leave Status</th>
-
-              </tr>
-            </thead>
-
-            {
-              print ?
+                </form>
+            </div>
 
 
-
-                items.map(item => (
-
-
-
-
-                  <tr>
-                    <th scope="row">
-
-                      {/* <EditLeaveMan text = {item.lid}/> */}
-                      {item.lid}
-
-
-                    </th>
-                    <td>
-                      {item.employeeId}
-                    </td>
-                    <td>
-
-                      {item.emplLevel}
-                    </td>
-                    <td>
-                      {item.managerId}
-                    </td>
-                    <td>
-                      {item.leavesInHand}
-                    </td>
-                    <td>
-                      {item.leaveStart}
-                    </td>
-                    <td>
-                      {item.leaveEnd}
-                    </td>
-                    <td>
-                      {item.leaveType}
-                    </td>
-                    <td>
-                      {item.reason}
-                    </td>
-                    <td>
-                      {item.leaveStatus}
-                    </td>
-
-                  </tr>
-
-                )) : null}
-
-          </table>
         </div>
 
-      </div>
     );
-  };
-};
-export default EditLeaveMan
+
+}
+
+
+
+export default EditLeaveMan;

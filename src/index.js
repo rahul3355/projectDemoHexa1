@@ -13,7 +13,7 @@ import EditLeaveMan from "./Component/EditLeaveMan";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
-
+import DeleteLeave from "./Component/DeleteLeave";
 
 
 
@@ -32,6 +32,7 @@ export default function App() {
           <Route path="AddEmp" element={<AddEmp/>}/>
           <Route path="ManagerView" element={<ManagerView/>}/>
           <Route path="EditLeaveMan" element={<EditLeaveMan/>}/>
+          <Route path="DeleteLeave" element={<DeleteLeave/>}/>
           
        
           

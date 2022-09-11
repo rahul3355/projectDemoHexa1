@@ -38,7 +38,7 @@ const AddEmp = () => {
         };
         fetch('http://localhost:12242/api/Leavelms/', requestOptions)
             .then(response => response.json())
-            .then(data => setSubmit(data.id));
+            .then(setSubmit(1));
 
     }
 

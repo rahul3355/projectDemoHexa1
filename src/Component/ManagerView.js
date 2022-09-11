@@ -11,16 +11,54 @@ const ManagerView = () => {
     const [data, setData] = useState(null)
     const [print, setPrint] = useState(false)
     const [mid, setMid] = useState(3);
+    const [submit, setSubmit] = useState(null);
+    const [inputs, setInputs] = useState({});
+
+    /* const handleChange = (event) => {
+        const name = event.target.id;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
+    } */
+    /* const handleSubmitDelete = (event, lid) => {
+        //event.preventDefault();
+        // alert(inputs.desc);
+
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        };
+        fetch('http://localhost:12242/api/Leavelms/'+lid, requestOptions)
+            .then(response => response.json())
+            .then(setSubmit(1));
+    } */
+
 
     function getData(val) {
         console.warn(val.target.value)
         setData(val.target.value)
         setMid(val.target.value)
+
         setPrint(false)
     }
 
+
+
     function setManagerId() {
         setMid(mid)
+    }
+
+    const setLid = (lid, employeeId, emplLevel, managerId, leavesInHand, leaveStart, leaveEnd, leaveType, reason, leaveStatus) => {
+        console.log(lid)
+        localStorage.setItem("LID", lid);
+        localStorage.setItem("EID", employeeId);
+        localStorage.setItem("ELEVEL", emplLevel);
+        localStorage.setItem("MID", managerId);
+        localStorage.setItem("LIH", leavesInHand);
+        localStorage.setItem("LS", leaveStart);
+        localStorage.setItem("LE", leaveEnd);
+        localStorage.setItem("LT", leaveType);
+        localStorage.setItem("RE", reason);
+        localStorage.setItem("LSTATUS", leaveStatus);
     }
 
 
@@ -31,7 +69,7 @@ const ManagerView = () => {
     useEffect(() => {
         //const mid1 = mid;
         //const baseUrl = 'http://localhost:12242/api/Leavelms/managerid/${mid}'
-        fetch(`http://localhost:12242/api/Leavelms/managerid/${mid}`)
+        fetch(`http://localhost:12242/api/Leavelms/managerid/${mid}/leaveStatus?status=pending`)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -47,6 +85,10 @@ const ManagerView = () => {
                 }
             )
     }, [mid])
+
+
+
+
 
 
 
@@ -97,20 +139,20 @@ const ManagerView = () => {
                     {
                         print ?
 
-                            
+
 
                             items.map(item => (
 
-                            
 
-                            
+
+
                                 <tr>
                                     <th scope="row">
-                                        
+
                                         {/* <EditLeaveMan text = {item.lid}/> */}
                                         {item.lid}
-                                        
-                                        
+
+
                                     </th>
                                     <td>
                                         {item.employeeId}
@@ -140,13 +182,22 @@ const ManagerView = () => {
                                     <td>
                                         {item.leaveStatus}
                                     </td>
+
                                     <td>
-                                        <Link to="/EditLeaveMan" text={item.lid}>
-                                            <button type="button" class="btn btn-outline-warning btn-sm">Edit</button>
+                                        <Link to="/EditLeaveMan/">
+                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)} class="btn btn-outline-warning btn-sm">Edit</button>
+                                        </Link>
+
+
+                                    </td>
+
+                                    <td>
+                                        <Link to="/DeleteLeave/">
+                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-outline-danger btn-sm">Delete</button>
                                         </Link>
                                     </td>
                                 </tr>
-                                                        
+
                             )) : null}
 
                 </table>

@@ -57,7 +57,7 @@ const Layout = () => {
                             <button class="btn btn-dark">Add Leave</button>
                         </Link>
                         <Link to="/AllEmp">
-                            <button class="btn btn-dark">Employee List</button>
+                            <button class="btn btn-dark">Leave List</button>
                         </Link>
 
                     </ul>

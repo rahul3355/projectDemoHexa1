@@ -101,7 +101,7 @@ const AllEmp = () => {
 
                 </table>
                 <Link to="/AddEmp">
-                <button>AddEmp</button>
+                <button>Add a leave</button>
                 </Link>
             </div>
         );
