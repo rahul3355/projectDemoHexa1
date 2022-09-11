@@ -145,14 +145,15 @@ const EditLeaveMan = (props) => {
 
     return (
         <div>
+            <div class="container-xl">
             <h1>UPDATE</h1>
             <br /><br />
-            <div class="container" id="leaveForm">
+            
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
                 <form>
 
 
-                    
+
 
                     <dl class="row">
                         <dt class="col-sm-9">Leave ID</dt>
@@ -175,37 +176,37 @@ const EditLeaveMan = (props) => {
                         <dd class="col-sm-1">{LeavesInHand}</dd>
                     </dl>
                     <blockquote class="blockquote">
-                    <dl class="row">
-                    <mark>
-                    <p><strong>Leave Start : {LeaveStart1}</strong></p></mark>
-                    </dl>
-                    <dl class="row"><mark>
-                    <p><strong>Leave End : {LeaveEnd1}</strong></p></mark>
-                    </dl> 
+                        <dl class="row">
+                            <mark>
+                                <p><strong>Leave Start : {LeaveStart1}</strong></p></mark>
+                        </dl>
+                        <dl class="row"><mark>
+                            <p><strong>Leave End : {LeaveEnd1}</strong></p></mark>
+                        </dl>
                     </blockquote>
 
                     <dl class="row">
-                        
+
                         <dt class="col-sm-9">Leave Type: </dt>
                         <dd class="col-sm-3">{LeaveType}</dd>
                     </dl>
-                        
+
 
                     <dl class="row">
                         <dt class="col-sm-9">Reason: </dt>
                         <dd class="col-sm-3">{Reason}</dd>
                     </dl>
 
-                       
 
-                        <button type="submit" onClick={handleSubmitApprove} class="btn btn-success">APPROVE</button>
 
-                        <button type="submit" onClick={handleSubmitReject} class="btn btn-danger">REJECT</button>
+                    <button type="submit" onClick={handleSubmitApprove} class="btn btn-success">APPROVE</button>
+
+                    <button type="submit" onClick={handleSubmitReject} class="btn btn-danger">REJECT</button>
 
 
                 </form>
-            </div>
-
+            
+    </div>
 
         </div>
 

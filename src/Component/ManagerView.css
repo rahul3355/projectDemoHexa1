@@ -8,3 +8,14 @@ th {
     padding-left: 20%;
     
 }
+
+th{
+    height: 40px;
+    font-size: small;
+}
+
+.flex-container {
+    width: 100%;
+    display: flex;
+  }
+

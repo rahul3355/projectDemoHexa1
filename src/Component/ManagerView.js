@@ -14,24 +14,6 @@ const ManagerView = () => {
     const [submit, setSubmit] = useState(null);
     const [inputs, setInputs] = useState({});
 
-    /* const handleChange = (event) => {
-        const name = event.target.id;
-        const value = event.target.value;
-        setInputs(values => ({ ...values, [name]: value }))
-    } */
-    /* const handleSubmitDelete = (event, lid) => {
-        //event.preventDefault();
-        // alert(inputs.desc);
-
-        const requestOptions = {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
-        };
-        fetch('http://localhost:12242/api/Leavelms/'+lid, requestOptions)
-            .then(response => response.json())
-            .then(setSubmit(1));
-    } */
-
 
     function getData(val) {
         console.warn(val.target.value)
@@ -109,7 +91,7 @@ const ManagerView = () => {
                 {/* <input type="text" id="managerID1" onChange={handleChange}></input><br />
             <button type="submit" class="btn btn-dark">Fetch</button> */}
 
-                <div class="container-sm">
+                <div class="container-lg">
 
                     <label class="col-6 col-sm-2"><b>Enter Manager ID</b></label>
                     <input class="col-6 col-sm-1" type="text" onChange={getData} /> <br />
@@ -132,7 +114,7 @@ const ManagerView = () => {
                             <th scope="col">Leave Type</th>
                             <th scope="col">Reason</th>
                             <th scope="col">Leave Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" colspan="2">Action</th>
                         </tr>
                     </thead>
 
@@ -168,10 +150,10 @@ const ManagerView = () => {
                                         {item.leavesInHand}
                                     </td>
                                     <td>
-                                        {item.leaveStart}
+                                        {item.leaveStart.slice(0, 10)}
                                     </td>
                                     <td>
-                                        {item.leaveEnd}
+                                        {item.leaveEnd.slice(0, 10)}
                                     </td>
                                     <td>
                                         {item.leaveType}
@@ -185,7 +167,7 @@ const ManagerView = () => {
 
                                     <td>
                                         <Link to="/EditLeaveMan/">
-                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)} class="btn btn-outline-warning btn-sm">Edit</button>
+                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)} class="btn btn-outline-warning btn-sm">Review</button>
                                         </Link>
 
 
@@ -193,7 +175,7 @@ const ManagerView = () => {
 
                                     <td>
                                         <Link to="/DeleteLeave/">
-                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-outline-danger btn-sm">Delete</button>
+                                            <button type="button" onClick={() => setLid(item.lid, item.employeeId, item.emplLevel, item.managerId, item.leavesInHand, item.leaveStart, item.leaveEnd, item.leaveType, item.reason, item.leaveStatus,)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-danger btn-sm">Delete</button>
                                         </Link>
                                     </td>
                                 </tr>

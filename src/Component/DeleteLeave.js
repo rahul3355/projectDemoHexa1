@@ -39,30 +39,57 @@ const DeleteLeave = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <h2>Leave ID = {LeaveId}</h2>
+                <br/>
+                <h2>DELETE LEAVE RECORD</h2>
+                <br/><br/>
+                
+                <dl class="row">
+                    <dt class="col-sm-9">Leave ID</dt>
+                    <dd class="col-sm-1">{LeaveId}</dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-9">Employee ID</dt>
+                    <dd class="col-sm-1">{EmployeeId}</dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-9">Employee Level</dt>
+                    <dd class="col-sm-1">{EmplLevel}</dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-9">Manager ID</dt>
+                    <dd class="col-sm-1">{ManagerId}</dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-9">Leaves in hand</dt>
+                    <dd class="col-sm-1">{LeavesInHand}</dd>
+                </dl>
+                <blockquote class="blockquote">
+                    <dl class="row">
+                        <mark>
+                            <p><strong>Leave Start : {LeaveStart1}</strong></p></mark>
+                    </dl>
+                    <dl class="row"><mark>
+                        <p><strong>Leave End : {LeaveEnd1}</strong></p></mark>
+                    </dl>
+                </blockquote>
 
-                <h2>Employee ID = {EmployeeId}</h2>
+                <dl class="row">
 
-                <h2>Level = {EmplLevel}</h2>
-
-                <h2>Manager Id: {ManagerId}</h2>
-
-                <h2>Leaves In Hand: {LeavesInHand}</h2>
+                    <dt class="col-sm-9">Leave Type: </dt>
+                    <dd class="col-sm-3">{LeaveType}</dd>
+                </dl>
 
 
-                <h2>Leave Start: {LeaveStart1}</h2><br />
+                <dl class="row">
+                    <dt class="col-sm-9">Reason: </dt>
+                    <dd class="col-sm-3">{Reason}</dd>
+                </dl>
 
-
-                <h2>Leave End: {LeaveEnd1}</h2><br />
-                {/* <label >leaveType</label><br/>
-               <input type="text" id="leaveType" onChange={handleChange}></input><br/> */}
-
-                <h2>Leave Type: {LeaveType}</h2>
-
-                <h2>Reason : {Reason}</h2>
-                <input type="submit"></input><br />
+                {/* <input type="submit"></input> */}
+                <button type="submit" class="btn btn-danger">DELETE</button>
+                <br />
                 {submit &&
-                    <label>Response Submitted</label>
+                    <label>Leave record deleted</label>
                 }
             </form>
         </div>

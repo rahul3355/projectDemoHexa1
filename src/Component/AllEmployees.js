@@ -5,7 +5,7 @@ import './AllEmp.css';
 
 
 
-const AllEmp = () => {
+const AllEmployees = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -16,7 +16,7 @@ const AllEmp = () => {
     // this useEffect will run once
     // similar to componentDidMount()
     useEffect(() => {
-        fetch("http://localhost:12242/api/Leavelms")
+        fetch("http://localhost:12242/api/Employeelms/")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -45,64 +45,50 @@ const AllEmp = () => {
                  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
             
                 <br/>
-                <table class="table table-striped table-dark">
-                    <thead class="thead-dark">
+                <table class="table table-dark">
+                    <thead>
                         <tr>
-                            <th scope="col">Leave ID</th>
+                            
                             <th scope="col">Employee ID</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Level</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
                             <th scope="col">Manager ID</th>
-                            <th scope="col">Leaves in hand</th>
-                            <th scope="col">Leave Start</th>
-                            <th scope="col">Leave End</th>
-                            <th scope="col">Leave Type</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Leave Status</th>
+                            
                         </tr>
                     </thead>
 
                     {items.map(item => (
 
                         <tr>
+                            
                             <th scope="row">
-                                {item.lid}
+                                {item.employeeId}
                             </th>
                             <td>
-                                {item.employeeId}
+
+                                {item.name}
                             </td>
                             <td>
-
-                                {item.emplLevel}
+                                {item.empLevel}
+                            </td>
+                            <td>
+                                {item.email}
+                            </td>
+                            <td>
+                                {item.phone}
                             </td>
                             <td>
                                 {item.managerId}
                             </td>
-                            <td>
-                                {item.leavesInHand}
-                            </td>
-                            <td>
-                                {item.leaveStart}
-                            </td>
-                            <td>
-                                {item.leaveEnd}
-                            </td>
-                            <td>
-                                {item.leaveType}
-                            </td>
-                            <td>
-                                {item.reason}
-                            </td>
-                            <td>
-                                {item.leaveStatus}
-                            </td>
+                            
                         </tr>
 
                     ))}
 
                 </table>
-                <Link to="/AddEmp">
-                <button>Add a leave</button>
-                </Link>
+               
             </div>
         );
     }
@@ -110,4 +96,4 @@ const AllEmp = () => {
 
 
 
-export default AllEmp;
+export default AllEmployees;

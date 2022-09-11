@@ -2,3 +2,8 @@ dl {
     
     font-size: 25px;
 }
+
+div {
+    align-items: center;
+    text-align: center;
+}

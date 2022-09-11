@@ -6,7 +6,7 @@ import './Layout.css';
 const Layout = () => {
     return (
         <div class="container-xl">
-             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
             {/* <nav>
             <ul>
                 
@@ -34,8 +34,8 @@ const Layout = () => {
             </ul>
 
         </nav> */}
-            
-            <br/>
+
+            <br />
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
 
 
@@ -56,8 +56,11 @@ const Layout = () => {
                         <Link to="/AddEmp">
                             <button class="btn btn-dark">Add Leave</button>
                         </Link>
-                        <Link to="/AllEmp">
+                        <Link to="/AllLeave">
                             <button class="btn btn-dark">Leave List</button>
+                        </Link>
+                        <Link to="/AllEmployees">
+                            <button class="btn btn-dark">Employee List</button>
                         </Link>
 
                     </ul>
