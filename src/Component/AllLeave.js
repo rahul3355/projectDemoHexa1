@@ -1,7 +1,10 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './AllEmp.css';
+
+
+
 
 
 
@@ -11,16 +14,28 @@ const AllLeave = () => {
     const [items, setItems] = useState([]);
     const [order, setOrder] = useState("ASC");
 
+    const setELid = (lid, employeeId, leaveStart, leaveEnd, leaveType, leaveStatus) => {
+        console.log(lid)
+        localStorage.setItem("eeLID", lid);
+        localStorage.setItem("eeEID", employeeId);
+        localStorage.setItem("eeLS", leaveStart);
+        localStorage.setItem("eeLE", leaveEnd);
+        localStorage.setItem("eeLT", leaveType);
+        localStorage.setItem("eeLSTATUS", leaveStatus);
+    }
+
+
+
     const sorting = (col) => {
         if (order == "ASC") {
-            const sorted = [...items].sort((a,b) =>
-            a[col].toLowerCase() > b[col].toLowerCase()? 1 : -1);
+            const sorted = [...items].sort((a, b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1);
             setItems(sorted);
             setOrder("DSC");
         }
         if (order == "DSC") {
-            const sorted = [...items].sort((a,b) =>
-            a[col].toLowerCase() < b[col].toLowerCase()? 1 : -1);
+            const sorted = [...items].sort((a, b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1);
             setItems(sorted);
             setOrder("ASC");
         }
@@ -28,14 +43,14 @@ const AllLeave = () => {
 
     const sortingInt = (col) => {
         if (order == "ASC") {
-            const sorted = [...items].sort((a,b) =>
-            a[col] > b[col]? 1 : -1);
+            const sorted = [...items].sort((a, b) =>
+                a[col] > b[col] ? 1 : -1);
             setItems(sorted);
             setOrder("DSC");
         }
         if (order == "DSC") {
-            const sorted = [...items].sort((a,b) =>
-            a[col] < b[col]? 1 : -1);
+            const sorted = [...items].sort((a, b) =>
+                a[col] < b[col] ? 1 : -1);
             setItems(sorted);
             setOrder("ASC");
         }
@@ -112,7 +127,7 @@ const AllLeave = () => {
                                 {item.leavesInHand}
                             </td>
                             <td>
-                                
+
                                 {item.leaveStart.slice(0, 10)}
                             </td>
                             <td>
@@ -127,8 +142,13 @@ const AllLeave = () => {
                             <td>
                                 {item.leaveStatus}
                             </td>
-                           
-                            
+                            <td>
+                                <Link to="/EmailLeave/">
+                                    <button type="button" onClick={() => setELid(item.lid, item.employeeId, item.leaveStart, item.leaveEnd, item.leaveType, item.leaveStatus)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-warning btn-sm">Email</button>
+                                </Link>
+                            </td>
+
+
                         </tr>
 
                     ))}

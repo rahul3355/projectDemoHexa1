@@ -62,6 +62,9 @@ const Layout = () => {
                         <Link to="/AllEmployees">
                             <button class="btn btn-dark">Employee List</button>
                         </Link>
+                        <Link to="/Dashboard">
+                            <button class="btn btn-dark">Dashboard</button>
+                        </Link>
                         
 
                     </ul>

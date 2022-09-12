@@ -15,6 +15,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import DeleteLeave from "./Component/DeleteLeave";
 import AllEmployees from "./Component/AllEmployees";
+import Dashboard from "./Component/Dashboard";
+import EmailLeave from "./Component/EmailLeave";
 
 
 
@@ -36,6 +38,8 @@ export default function App() {
           <Route path="EditLeaveMan" element={<EditLeaveMan/>}/>
           <Route path="DeleteLeave" element={<DeleteLeave/>}/>
           <Route path="AllEmployees" element={<AllEmployees/>}/>
+          <Route path="Dashboard" element={<Dashboard/>}/>
+          <Route path="EmailLeave" element={<EmailLeave/>}/>
           
           
        

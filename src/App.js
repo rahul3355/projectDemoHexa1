@@ -10,6 +10,8 @@ import { Route } from 'react-router-dom';
 import { Component } from "react";
 import DeleteLeave from './Component/DeleteLeave';
 import AllEmployees from './Component/AllEmployees';
+import Dashboard from './Component/dashboard';
+import EmailLeave from './Component/EmailLeave';
 
 
 
@@ -26,6 +28,8 @@ function App() {
       <DeleteLeave />
       <EditLeaveMan />
       <AllEmployees />
+      <Dashboard/>
+      <EmailLeave/>
       
       
 
