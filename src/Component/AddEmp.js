@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from "react-router-dom";
 import './AddEmp.css';
-
+import Alert from 'react-bootstrap/Alert';
 
 
 const AddEmp = () => {
     const [submit, setSubmit] = useState(null);
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
+    const EmployeeId1 = localStorage.getItem('EID1');
+    const EmplLevel1 = localStorage.getItem('ELEVEL1');
+    const ManagerId1 = localStorage.getItem('MID1');
+
+    const validateInputs = (leaveStart, leaveEnd) => {
+        var date1 = new Date(leaveStart);
+        var date2 = new Date(leaveEnd);
+
+        //best to use .getTime() to compare dates
+
+        if (date1.getTime() > date2.getTime()) {
+            
+            alert("Leave start date should be before leave end date");
+            document.getElementById('leaveEnd').value = "";
+        }
+    }
 
 
     const handleChange = (event) => {
@@ -25,9 +43,9 @@ const AddEmp = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                employeeId: inputs.employeeId,
-                emplLevel: inputs.emplLevel,
-                managerId: inputs.managerId,
+                employeeId: EmployeeId1,
+                emplLevel: EmplLevel1,
+                managerId: ManagerId1,
                 leavesInHand: inputs.leavesInHand,
                 leaveStart: inputs.leaveStart,
                 leaveEnd: inputs.leaveEnd,
@@ -40,6 +58,9 @@ const AddEmp = () => {
             .then(response => response.json())
             .then(data => setSubmit(data.id));
 
+        alert("The leave request has been sent to manager.");
+        navigate('/AllLeave');
+
     }
 
 
@@ -51,11 +72,11 @@ const AddEmp = () => {
 
                 <br />
                 <label>Employee ID</label><br />
-                <input type="number" id="employeeId" onChange={handleChange}></input><br></br>
+                <input type="number" id="employeeId" onChange={handleChange} value={EmployeeId1} disabled={true}></input><br></br>
                 <label >Level</label><br />
-                <input type="number" id="emplLevel" onChange={handleChange}></input><br />
+                <input type="number" id="emplLevel" onChange={handleChange} value={EmplLevel1} disabled={true}></input><br />
                 <label>Manager Id</label><br />
-                <input type="number" id="managerId" onChange={handleChange}></input><br></br>
+                <input type="number" id="managerId" onChange={handleChange} value={ManagerId1} disabled={true}></input><br></br>
                 <label>Leaves In Hand</label><br />
                 <input type="number" id="leavesInHand" onChange={handleChange}></input><br></br><br />
                 <label >Leave Start</label><br />
@@ -93,7 +114,7 @@ const AddEmp = () => {
                         window.location.href = "http://localhost:3000/AllEmp"}
                 </script> */}
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" onClick={validateInputs(inputs.leaveStart, inputs.leaveEnd)} class="btn btn-dark">Submit</button>
 
             </form>
         </div>

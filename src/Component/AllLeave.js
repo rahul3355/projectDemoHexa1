@@ -96,6 +96,7 @@ const AllLeave = () => {
                             <td>
                                 {item.leaveStatus}
                             </td>
+                            
                         </tr>
 
                     ))}

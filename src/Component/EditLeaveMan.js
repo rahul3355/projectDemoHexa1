@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './AddEmp.css';
 import './EditLeaveMan.css';
@@ -8,6 +9,7 @@ import './EditLeaveMan.css';
 const EditLeaveMan = (props) => {
     const [submit, setSubmit] = useState(null);
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
 
     const LeaveId = localStorage.getItem('LID');
@@ -31,40 +33,7 @@ const EditLeaveMan = (props) => {
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-    /*    const UpdateLeave = (e) => {
-           e.preventDefault();
-           const data = {
-               lid: LeaveId,
-               employeeId: EmployeeId,
-               emplLevel: EmplLevel,
-               managerId: ManagerId,
-               leavesInHand: LeavesInHand,
-               leaveStart: LeaveStart,
-               leaveEnd: LeaveEnd,
-               leaveType: LeaveType,
-               reason: Reason,
-               leaveStatus: "approved"
-           };
-           const url = 'http://localhost:3000/api/Leavelms/UpdateLeave';
-           axios.put(url, data)
-           .then((result) => {
-               props.history.push('/AllEmp');
-           });
-   
-       }
-    */
-    /* componentDidMount() {
-        // Simple PUT request with a JSON body using fetch
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React PUT Request Example' })
-        };
-        fetch('https://jsonplaceholder.typicode.com/posts/1', requestOptions)
-            .then(response => response.json())
-            .then(data => this.setState({ postId: data.id }));
-    } */
-
+  
 
 
     const handleSubmitApprove = (/* event */) => {
@@ -91,33 +60,13 @@ const EditLeaveMan = (props) => {
             .then(response => response.json())
             .then(setSubmit(1));
 
-        /* const requestOptions = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer my-token'
-            },
-            body: JSON.stringify({
-                lid: inputs.lid,
-                employeeId: inputs.employeeId,
-                emplLevel: inputs.emplLevel,
-                managerId: inputs.managerId,
-                leavesInHand: inputs.leavesInHand,
-                leaveStart: inputs.leaveStart,
-                leaveEnd: inputs.leaveEnd,
-                leaveType: inputs.leaveType,
-                reason: inputs.reason,
-                leaveStatus: inputs.leaveStatus
-
-            })
-        };
-        fetch(`http://localhost:12242/api/Leavelms/${inputs.lid}`, requestOptions)
-            .then(response => response.json())
-            .then(setSubmit(1)); */
+            alert("The leave request has been approved.");
+            navigate('/AllLeave');
 
     }
 
     const handleSubmitReject = (/* event */) => {
+        
         // event.preventDefault();
         // alert(inputs.desc);
 
@@ -140,6 +89,10 @@ const EditLeaveMan = (props) => {
         fetch(`http://localhost:12242/api/Leavelms/${LeaveId}`, requestOptions)
             .then(response => response.json())
             .then(setSubmit(1));
+
+            alert("The leave request has been rejected.");
+            
+            navigate('/AllLeave');
 
     }
 
