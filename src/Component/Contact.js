@@ -6,7 +6,13 @@ const Contact = () => {
     
     return (
     <div>
-        <h2>This is Contact Page</h2>
+        <br /><br /><br />
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Contact Page</h1>
+                    <p class="lead">Leave Management System</p>
+                </div>
+            </div>
     </div>
     );
 };

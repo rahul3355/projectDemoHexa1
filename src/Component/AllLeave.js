@@ -9,6 +9,37 @@ const AllLeave = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [order, setOrder] = useState("ASC");
+
+    const sorting = (col) => {
+        if (order == "ASC") {
+            const sorted = [...items].sort((a,b) =>
+            a[col].toLowerCase() > b[col].toLowerCase()? 1 : -1);
+            setItems(sorted);
+            setOrder("DSC");
+        }
+        if (order == "DSC") {
+            const sorted = [...items].sort((a,b) =>
+            a[col].toLowerCase() < b[col].toLowerCase()? 1 : -1);
+            setItems(sorted);
+            setOrder("ASC");
+        }
+    }
+
+    const sortingInt = (col) => {
+        if (order == "ASC") {
+            const sorted = [...items].sort((a,b) =>
+            a[col] > b[col]? 1 : -1);
+            setItems(sorted);
+            setOrder("DSC");
+        }
+        if (order == "DSC") {
+            const sorted = [...items].sort((a,b) =>
+            a[col] < b[col]? 1 : -1);
+            setItems(sorted);
+            setOrder("ASC");
+        }
+    }
 
 
 
@@ -48,16 +79,16 @@ const AllLeave = () => {
                 <table class="table table-striped table-dark">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Leave ID</th>
-                            <th scope="col">Employee ID</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Manager ID</th>
-                            <th scope="col">Leaves in hand</th>
+                            <th scope="col" onClick={() => sortingInt("lid")}>Leave ID</th>
+                            <th scope="col" onClick={() => sortingInt("employeeId")}>Employee ID</th>
+                            <th scope="col" onClick={() => sortingInt("emplLevel")}>Level</th>
+                            <th scope="col" onClick={() => sortingInt("managerid")}>Manager ID</th>
+                            <th scope="col" onClick={() => sortingInt("leavesInHand")}>Leaves in hand</th>
                             <th scope="col">Leave Start</th>
                             <th scope="col">Leave End</th>
-                            <th scope="col">Leave Type</th>
-                            <th scope="col">Reason</th>
-                            <th scope="col">Leave Status</th>
+                            <th scope="col" onClick={() => sorting("leaveType")}>Leave Type</th>
+                            <th scope="col" onClick={() => sorting("reason")}>Reason</th>
+                            <th scope="col" onClick={() => sorting("leaveStatus")}>Leave Status</th>
                         </tr>
                     </thead>
 
@@ -96,6 +127,7 @@ const AllLeave = () => {
                             <td>
                                 {item.leaveStatus}
                             </td>
+                           
                             
                         </tr>
 

@@ -18,17 +18,25 @@ const AddEmp = () => {
     const validateInputs = (leaveStart, leaveEnd) => {
         var date1 = new Date(leaveStart);
         var date2 = new Date(leaveEnd);
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
+        var start = moment(date1);
+        var end = moment(date2);
+        var difff = end.diff(start, "days")
+        console.log(difff)
         //best to use .getTime() to compare dates
         /* var date_create = moment().format("DD-MM-YYYY hh:mm:ss")
         console.warn(date_create)
         console.warn(date2) */
-
+        //
         if (date1.getTime() > date2.getTime()) {
 
             alert("Leave start date should be before leave end date");
             document.getElementById('leaveEnd').value = "";
+
         }
+        
     }
 
 
@@ -53,7 +61,7 @@ const AddEmp = () => {
                 employeeId: EmployeeId1,
                 emplLevel: EmplLevel1,
                 managerId: ManagerId1,
-                leavesInHand: inputs.leavesInHand,
+                leavesInHand: 18,
                 leaveStart: inputs.leaveStart,
                 leaveEnd: inputs.leaveEnd,
                 leaveType: inputs.leaveType,
@@ -84,12 +92,13 @@ const AddEmp = () => {
                 <input type="number" id="emplLevel" onChange={handleChange} value={EmplLevel1} disabled={true}></input><br />
                 <label>Manager Id</label><br />
                 <input type="number" id="managerId" onChange={handleChange} value={ManagerId1} disabled={true}></input><br></br>
-                <label>Leaves In Hand</label><br />
-                <input type="number" id="leavesInHand" onChange={handleChange}></input><br></br><br />
+               {/*  <label>Leaves In Hand</label><br />
+                <input type="number" id="leavesInHand" onChange={handleChange} min="0" max="30" required></input><br></br><br /> */}
                 <label >Leave Start</label><br />
-                <input type="date" id="leaveStart" onChange={handleChange}></input><br /><br />
+                <input type="date" id="leaveStart" onChange={handleChange} min="2022-09-12" required></input><br /><br />
                 <label>Leave End</label><br />
-                <input type="date" id="leaveEnd" onChange={handleChange}></input><br></br><br />
+                <input type="date" id="leaveEnd" onChange={handleChange} required></input><br></br><br />
+                {/* <input type="text" id="difference"></input> */}
                 {/* <label >leaveType</label><br/>
                 <input type="text" id="leaveType" onChange={handleChange}></input><br/> */}
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref" id="leabe">Leave Type</label>

@@ -7,3 +7,12 @@ div {
     align-items: center;
     text-align: center;
 }
+
+#leaveDays, #leaveDays1 {
+    color: red;
+    font-weight: bolder;
+}
+
+.container-xl {
+    padding-right: 100px;
+}

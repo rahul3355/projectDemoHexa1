@@ -95,7 +95,7 @@ const AllEmployees = () => {
                         <tr>
 
                             <th scope="col" onClick={() => sortingInt("employeeId")} >Employee ID</th>
-                            <th scope="col"onClick={() => sorting("name")}>Name</th>
+                            <th scope="col" onClick={() => sorting("name")}>Name</th>
                             <th scope="col" onClick={() => sortingInt("Level")} >Level</th>
                             <th scope="col" onClick={() => sorting("email")}>Email</th>
                             <th scope="col" onClick={() => sorting("phone")}>Phone</th>
@@ -110,7 +110,7 @@ const AllEmployees = () => {
                         } else if (
                             val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             val.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            val.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           // val.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             val.employeeId.toString().includes(searchTerm.toString()) ||
                             val.empLevel.toString().includes(searchTerm.toString()) ||
                             val.managerId.toString().includes(searchTerm.toString())

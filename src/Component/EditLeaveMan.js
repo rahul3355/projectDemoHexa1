@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './AddEmp.css';
 import './EditLeaveMan.css';
+import moment from "moment";
 
 
 
@@ -27,13 +28,19 @@ const EditLeaveMan = (props) => {
     let LeaveStart1 = LeaveStart.slice(0, 10);
     let LeaveEnd1 = LeaveEnd.slice(0, 10);
 
+    var start = moment(LeaveStart);
+    var end = moment(LeaveEnd);
+    var difff = end.diff(start, "days")
+    console.log(difff)
+    const leaveDays = difff;
+
     const handleChange = (event) => {
         const name = event.target.id;
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }))
     }
 
-  
+
 
 
     const handleSubmitApprove = (/* event */) => {
@@ -60,13 +67,13 @@ const EditLeaveMan = (props) => {
             .then(response => response.json())
             .then(setSubmit(1));
 
-            alert("The leave request has been approved.");
-            navigate('/AllLeave');
+        alert("The leave request has been approved.");
+        navigate('/AllLeave');
 
     }
 
     const handleSubmitReject = (/* event */) => {
-        
+
         // event.preventDefault();
         // alert(inputs.desc);
 
@@ -90,18 +97,23 @@ const EditLeaveMan = (props) => {
             .then(response => response.json())
             .then(setSubmit(1));
 
-            alert("The leave request has been rejected.");
-            
-            navigate('/AllLeave');
+        alert("The leave request has been rejected.");
+
+        navigate('/AllLeave');
 
     }
 
     return (
         <div>
-            <div class="container-xl">
-            <h1>UPDATE</h1>
-            <br /><br />
-            
+            <div class="container-lg">
+                
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container-xl">
+                        <h1 class="display-4">Review Leave Request</h1>
+                    
+
+                <br />
+
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
                 <form>
 
@@ -127,6 +139,10 @@ const EditLeaveMan = (props) => {
                     <dl class="row">
                         <dt class="col-sm-9">Leaves in hand</dt>
                         <dd class="col-sm-1">{LeavesInHand}</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9" id="leaveDays">Leave Days</dt>
+                        <dd class="col-sm-2" id="leaveDays1">{leaveDays} Days</dd>
                     </dl>
                     <blockquote class="blockquote">
                         <dl class="row">
@@ -158,8 +174,10 @@ const EditLeaveMan = (props) => {
 
 
                 </form>
-            
-    </div>
+
+            </div>
+            </div>
+                </div>
 
         </div>
 
