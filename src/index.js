@@ -18,6 +18,7 @@ import AllEmployees from "./Component/AllEmployees";
 
 
 
+
  
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="EditLeaveMan" element={<EditLeaveMan/>}/>
           <Route path="DeleteLeave" element={<DeleteLeave/>}/>
           <Route path="AllEmployees" element={<AllEmployees/>}/>
+          
           
        
           

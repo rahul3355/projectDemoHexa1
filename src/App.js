@@ -12,6 +12,7 @@ import DeleteLeave from './Component/DeleteLeave';
 import AllEmployees from './Component/AllEmployees';
 
 
+
 function App() {
 
   return (
@@ -25,6 +26,7 @@ function App() {
       <DeleteLeave />
       <EditLeaveMan />
       <AllEmployees />
+      
       
 
     </div>

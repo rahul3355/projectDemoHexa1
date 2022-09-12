@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 import './AddEmp.css';
-import Alert from 'react-bootstrap/Alert';
+import moment from "moment";
+
 
 
 const AddEmp = () => {
@@ -19,13 +20,19 @@ const AddEmp = () => {
         var date2 = new Date(leaveEnd);
 
         //best to use .getTime() to compare dates
+        /* var date_create = moment().format("DD-MM-YYYY hh:mm:ss")
+        console.warn(date_create)
+        console.warn(date2) */
 
         if (date1.getTime() > date2.getTime()) {
-            
+
             alert("Leave start date should be before leave end date");
             document.getElementById('leaveEnd').value = "";
         }
     }
+
+
+
 
 
     const handleChange = (event) => {

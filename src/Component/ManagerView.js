@@ -9,18 +9,24 @@ const ManagerView = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [data, setData] = useState(null)
-    const [print, setPrint] = useState(false)
+    const [print, setPrint] = useState(true)
     const [mid, setMid] = useState(3);
     const [submit, setSubmit] = useState(null);
     const [inputs, setInputs] = useState({});
+    const [searchTerm, setsearchTerm] = useState("");
 
 
     function getData(val) {
         console.warn(val.target.value)
+        if (val == null || val.toString() === ""){
+            setPrint(false)
+        }
+        else{
         setData(val.target.value)
         setMid(val.target.value)
 
         setPrint(false)
+    }
     }
 
 
@@ -98,6 +104,14 @@ const ManagerView = () => {
                     <button class="col-6 col-sm-3 btn-warning" onClick={() => setPrint(true)} >Fetch Leave Applications</button>
 
                 </div>
+                <input hidden={true}
+                    type="text" placeholder="Search.." className="form-control"
+                    style={{marginTop: 50, marginBottom: 50, width: "40%"}}
+                    onChange={(e) =>{
+                        setsearchTerm(e.target.value);
+                        setMid(e.target.value);
+                    }}
+                />  
 
                 <br /><br />
 
