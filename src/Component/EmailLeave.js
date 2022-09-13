@@ -19,32 +19,25 @@ const EmailLeave = () => {
     var end = moment(LeaveEnd);
     var difff = end.diff(start, "days")
     console.log(difff)
-    const leaveDays = difff + 1;
+    
 
-    function calcBusinessDays(dDate1, dDate2) { // input given as Date objects
-        var iWeeks, iDateDiff, iAdjust = 0;
-        if (dDate2 < dDate1) return -1; // error code if dates transposed
-        var iWeekday1 = dDate1.getDay(); // day of week
-        var iWeekday2 = dDate2.getDay();
-        iWeekday1 = (iWeekday1 == 0) ? 7 : iWeekday1; // change Sunday from 0 to 7
-        iWeekday2 = (iWeekday2 == 0) ? 7 : iWeekday2;
-        if ((iWeekday1 > 5) && (iWeekday2 > 5)) iAdjust = 1; // adjustment if both days on weekend
-        iWeekday1 = (iWeekday1 > 5) ? 5 : iWeekday1; // only count weekdays
-        iWeekday2 = (iWeekday2 > 5) ? 5 : iWeekday2;
-      
-        // calculate differnece in weeks (1000mS * 60sec * 60min * 24hrs * 7 days = 604800000)
-        iWeeks = Math.floor((dDate2.getTime() - dDate1.getTime()) / 604800000)
-      
-        if (iWeekday1 < iWeekday2) { //Equal to makes it reduce 5 days
-          iDateDiff = (iWeeks * 5) + (iWeekday2 - iWeekday1)
-        } else {
-          iDateDiff = ((iWeeks + 1) * 5) - (iWeekday1 - iWeekday2)
+    const getBusinessDatesCount = (startDate, endDate) => {
+        let count = 0;
+        let curDate = +startDate;
+        while (curDate <= +endDate) {
+          const dayOfWeek = new Date(curDate).getDay();
+          const isWeekend = (dayOfWeek === 6) || (dayOfWeek === 0);
+          if (!isWeekend) {
+            count++;
+          }
+          curDate = curDate + 24 * 60 * 60 * 1000
         }
-      
-        iDateDiff -= iAdjust // take into account both days on weekend
-      
-        return (iDateDiff + 1); // add 1 because dates are inclusive
+        return count;
       }
+    
+    var diff2 = getBusinessDatesCount(start, end)
+    console.log(diff2)
+    const leaveDays = diff2;
 
       //const leaveDays1 = calcBusinessDays(LeaveStart, LeaveEnd);
 

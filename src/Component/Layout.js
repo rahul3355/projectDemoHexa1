@@ -45,6 +45,7 @@ const Layout = () => {
 
                     <a class="navbar-brand" href="#">
                         <img src={hexLogo} width="50" height="50" class="d-inline-block align-top" alt=""/>
+                        
                            
                     </a>
                     <ul class="navbar-nav mr-auto nvv2">

@@ -32,7 +32,25 @@ const EditLeaveMan = (props) => {
     var end = moment(LeaveEnd);
     var difff = end.diff(start, "days")
     console.log(difff)
-    const leaveDays = difff;
+    
+
+    const getBusinessDatesCount = (startDate, endDate) => {
+        let count = 0;
+        let curDate = +startDate;
+        while (curDate <= +endDate) {
+          const dayOfWeek = new Date(curDate).getDay();
+          const isWeekend = (dayOfWeek === 6) || (dayOfWeek === 0);
+          if (!isWeekend) {
+            count++;
+          }
+          curDate = curDate + 24 * 60 * 60 * 1000
+        }
+        return count;
+      }
+    
+    var diff2 = getBusinessDatesCount(start, end)
+    console.log(diff2)
+    const leaveDays = diff2;
 
     
     const handleChange = (event) => {
@@ -145,7 +163,7 @@ const EditLeaveMan = (props) => {
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-9" id="leaveDays">Leave Days</dt>
-                        <dd class="col-sm-2" id="leaveDays1">{leaveDays+1} Days</dd>
+                        <dd class="col-sm-2" id="leaveDays1">{leaveDays} Days</dd>
                     </dl>
                     <blockquote class="blockquote">
                         <dl class="row">

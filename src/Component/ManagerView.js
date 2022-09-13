@@ -57,6 +57,7 @@ const ManagerView = () => {
     useEffect(() => {
         //const mid1 = mid;
         //const baseUrl = 'http://localhost:12242/api/Leavelms/managerid/${mid}'
+        
         fetch(`http://localhost:12242/api/Leavelms/managerid/${mid}/leaveStatus?status=pending`)
             .then(res => res.json())
             .then(
@@ -72,7 +73,9 @@ const ManagerView = () => {
                     setError(error);
                 }
             )
-    }, [mid])
+        }
+        
+    , [mid])
 
 
 
