@@ -49,7 +49,10 @@ const Contact = () => {
                     </div>
                 </div>
             </form>
+            
 </div>
+<br/><br/><br/><br/><br/>
+                <p>-</p>
            
     </div>
     );

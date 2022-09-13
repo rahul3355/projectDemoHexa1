@@ -11,6 +11,11 @@ const AddEmp = () => {
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
 
+    const todayDate = moment().toDate();
+    const todayDate1 = moment(todayDate, "DD/MM/YYYY");
+    console.log(todayDate);
+    console.log(todayDate1);
+
     const EmployeeId1 = localStorage.getItem('EID1');
     const EmplLevel1 = localStorage.getItem('ELEVEL1');
     const ManagerId1 = localStorage.getItem('MID1');

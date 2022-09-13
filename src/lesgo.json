@@ -1,0 +1,6 @@
+
+[{ "id": 1, "icon": "./e1.jpg" ,"employeeId": 1, "name": "Ted Mosby", "empLevel": 1, "email": "tedmosby@gmail.com", "phone": "8045823489", "managerId": 1, "leavelms": [] },
+{ "id": 2, "employeeId": 2, "name": "Barney Stinson", "empLevel": 2, "email": "barneystinson@gmail.com", "phone": "9299923477", "managerId": 1, "leavelms": [] },
+{ "id": 3, "employeeId": 3, "name": "Robin Scherbatsky", "empLevel": 2, "email": "robinscherbatsky@gmail.com", "phone": "8589923445", "managerId": 1, "leavelms": [] },
+{ "id": 4, "employeeId": 4, "name": "Lily Aldrin", "empLevel": 3, "email": "lilyaldrin@gmail.com", "phone": "5673923433", "managerId": 2, "leavelms": [] },
+{ "id": 5, "employeeId": 5, "name": "Marshall Eriksen", "empLevel": 3, "email": "marshalleriksen@gmail.com", "phone": "22123423433", "managerId": 3, "leavelms": [] }]

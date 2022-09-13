@@ -2,6 +2,7 @@ import { VictoryPie } from "victory-pie";
 import { React, useEffect } from "react";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './Dashboard.css';
 import {  Line } from 'recharts';
 import { BarChart, Bar, PieChart, Pie, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import { AreaChart, Area, ComposedChart, Scatter } from 'recharts';
@@ -61,7 +62,7 @@ const Dashboard = () => {
         <div>
             <div style={{ textAlign: "center" }}>
                 <br/>
-                <h1>Leave Analytics</h1>
+                <h1 id="heading1">Leave Analytics</h1>
                 <br/>
                 <table>
 

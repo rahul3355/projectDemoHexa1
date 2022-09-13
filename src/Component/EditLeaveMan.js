@@ -30,8 +30,7 @@ const EditLeaveMan = (props) => {
 
     var start = moment(LeaveStart);
     var end = moment(LeaveEnd);
-    var difff = end.diff(start, "days")
-    console.log(difff)
+    
     
 
     const getBusinessDatesCount = (startDate, endDate) => {
