@@ -2,6 +2,7 @@ import { ReactDOM } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Layout.css';
+import hexLogo from './../images/hexLogo2.png'
 
 const Layout = () => {
     return (
@@ -36,18 +37,19 @@ const Layout = () => {
         </nav> */}
 
             <br />
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent navv">
 
-                <div class="navbar-header">
-      <a class="navbar-brand" href="Home">LMS</a>
-    </div>
+                    <a class="navbar-brand" href="#">
+                        <img src={hexLogo} width="50" height="50" class="d-inline-block align-top" alt=""/>
+                           
+                    </a>
                     <ul class="navbar-nav mr-auto nvv2">
                         <Link to="/Home">
-                            <button class="btn btn-dark">Home</button>
+                            <button class="btn btn-dark homeButton">Home</button>
                         </Link>
                         <Link to="/About">
                             <button class="btn btn-dark">About</button>
@@ -58,7 +60,7 @@ const Layout = () => {
                         <Link to="/ManagerView">
                             <button class="btn btn-warning">Manager View</button>
                         </Link>
-                        
+
                         <Link to="/AllLeave">
                             <button class="btn btn-dark">Leave List</button>
                         </Link>
@@ -68,7 +70,7 @@ const Layout = () => {
                         <Link to="/Dashboard">
                             <button class="btn btn-dark">Dashboard</button>
                         </Link>
-                        
+
 
                     </ul>
 
