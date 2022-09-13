@@ -34,11 +34,14 @@ const EditLeaveMan = (props) => {
     console.log(difff)
     const leaveDays = difff;
 
+    
     const handleChange = (event) => {
         const name = event.target.id;
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }))
     }
+
+
 
 
 
@@ -142,7 +145,7 @@ const EditLeaveMan = (props) => {
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-9" id="leaveDays">Leave Days</dt>
-                        <dd class="col-sm-2" id="leaveDays1">{leaveDays} Days</dd>
+                        <dd class="col-sm-2" id="leaveDays1">{leaveDays+1} Days</dd>
                     </dl>
                     <blockquote class="blockquote">
                         <dl class="row">

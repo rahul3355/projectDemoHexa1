@@ -95,7 +95,7 @@ const AddEmp = () => {
                {/*  <label>Leaves In Hand</label><br />
                 <input type="number" id="leavesInHand" onChange={handleChange} min="0" max="30" required></input><br></br><br /> */}
                 <label >Leave Start</label><br />
-                <input type="date" id="leaveStart" onChange={handleChange} min="2022-09-12" required></input><br /><br />
+                <input type="date" id="leaveStart" onChange={handleChange} min="2022-09-13" required></input><br /><br />
                 <label>Leave End</label><br />
                 <input type="date" id="leaveEnd" onChange={handleChange} required></input><br></br><br />
                 {/* <input type="text" id="difference"></input> */}

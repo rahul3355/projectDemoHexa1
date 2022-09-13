@@ -11,13 +11,13 @@ var leaveData = [{}];
 var allData = [{}];
 //const LeaveLabels = ["vacation", "Maternal", "Vacation", "Medical", "personal", "medical", "paid", "paternity", "maternity"];
 
-const myData = [
+/* const myData = [
     { x: "PHP", y: 900 },
     { x: "Python", y: 400 },
     { x: "Javascript", y: 300 },
     { x: "Shart", y: 700 },
     { x: "Jipt", y: 150 }
-];
+]; */
 
 const Dashboard = () => {
 
@@ -61,15 +61,15 @@ const Dashboard = () => {
         <div>
             <div style={{ textAlign: "center" }}>
                 <br/>
-                <h1>Leave Dashboard Analytics</h1>
+                <h1>Leave Analytics</h1>
                 <br/>
                 <table>
 
                 </table>
                 <div>
                     <ComposedChart
-                        width={1000}
-                        height={500}
+                        width={1200}
+                        height={400}
                         data={leaveData}
                         margin={{
                             top: 20,
@@ -93,7 +93,7 @@ const Dashboard = () => {
                     <PieChart width={400} height={400}>
                         <Pie
                             dataKey="y"
-                            isAnimationActive={false}
+                            isAnimationActive={true}
                             data={leaveData}
                             cx={200}
                             cy={200}

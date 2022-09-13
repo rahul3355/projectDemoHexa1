@@ -104,6 +104,7 @@ const AllLeave = () => {
                             <th scope="col" onClick={() => sorting("leaveType")}>Leave Type</th>
                             <th scope="col" onClick={() => sorting("reason")}>Reason</th>
                             <th scope="col" onClick={() => sorting("leaveStatus")}>Leave Status</th>
+                            <th scope="col">Email</th>
                         </tr>
                     </thead>
 
@@ -144,7 +145,7 @@ const AllLeave = () => {
                             </td>
                             <td>
                                 <Link to="/EmailLeave/">
-                                    <button type="button" onClick={() => setELid(item.lid, item.employeeId, item.leaveStart, item.leaveEnd, item.leaveType, item.leaveStatus)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-warning btn-sm">Email</button>
+                                    <button type="button" onClick={() => setELid(item.lid, item.employeeId, item.leaveStart, item.leaveEnd, item.leaveType, item.leaveStatus)}/*  onClick={handleSubmitDelete(item.lid)} */ class="btn btn-dark btn-sm">Email Status</button>
                                 </Link>
                             </td>
 
@@ -154,9 +155,7 @@ const AllLeave = () => {
                     ))}
 
                 </table>
-                <Link to="/AddEmp">
-                    <button>Add a leave</button>
-                </Link>
+              
                 <br /><br />
             </div>
         );

@@ -37,9 +37,14 @@ const Layout = () => {
 
             <br />
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            
 
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent navv">
+
+                <div class="navbar-header">
+      <a class="navbar-brand" href="Home">LMS</a>
+    </div>
                     <ul class="navbar-nav mr-auto nvv2">
                         <Link to="/Home">
                             <button class="btn btn-dark">Home</button>
@@ -53,9 +58,7 @@ const Layout = () => {
                         <Link to="/ManagerView">
                             <button class="btn btn-warning">Manager View</button>
                         </Link>
-                        <Link to="/AddEmp">
-                            <button class="btn btn-dark">Add Leave</button>
-                        </Link>
+                        
                         <Link to="/AllLeave">
                             <button class="btn btn-dark">Leave List</button>
                         </Link>
