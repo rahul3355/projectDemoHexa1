@@ -16,6 +16,7 @@ const About = () => {
     
     return (
     <div>
+      <div class="container-xl">
         <br />
             <CardGroup>
       <Card>
@@ -52,6 +53,7 @@ const About = () => {
         <Card.Img variant="top" src={leave9} />
       </Card>
     </CardGroup>
+    </div>
     </div>
     );
 };

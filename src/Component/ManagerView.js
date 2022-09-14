@@ -117,6 +117,7 @@ const ManagerView = () => {
                 />  
 
                 <br /><br />
+                <div class="container-xl">
 
                 <table class="table table-striped table-dark">
                     <thead class="thead-dark">
@@ -200,6 +201,7 @@ const ManagerView = () => {
                             )) : null}
 
                 </table>
+                </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 <p>-</p>
             </div>

@@ -136,8 +136,10 @@ const AddEmp = () => {
                 </script> */}
 
                 <button type="submit" onClick={validateInputs(inputs.leaveStart, inputs.leaveEnd)} class="btn btn-dark">Submit</button>
-
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <p>-</p>
             </form>
+            
         </div>
     );
 }
