@@ -16,3 +16,22 @@ div {
 .container-xl {
     padding-right: 100px;
 }
+
+table {border: none;}
+
+
+
+#tableStart {
+    font-weight: 800;
+    background-color: #fbfc92;
+}
+
+#headLeave {
+    color: white;
+    font-weight: 800;
+}
+
+#head1 {
+    color: rgba(0, 0, 0, 0.712);
+    font-weight: 800;
+}
