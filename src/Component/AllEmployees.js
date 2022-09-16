@@ -2,12 +2,10 @@ import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './AllEmp.css';
-import Records from './lesgo.json';
-import e1 from './../images/e1.jpg'
-import e2 from './../images/e2.jpg'
-import e3 from './../images/e3.jpg'
-import e4 from './../images/e4.jpg'
-import e5 from './../images/e5.jpg'
+import { useNavigate } from "react-router-dom";
+import Record from './lesgo.json';
+//import download from 'images/download.jpg';
+
 
 
 
@@ -18,15 +16,20 @@ const AllEmployees = () => {
     const [items, setItems] = useState([]);
     const [order, setOrder] = useState("ASC");
     const [searchTerm, setsearchTerm] = useState("");
+    const navigate = useNavigate();
 
-    
+
 
     const setEid = (employeeId, empLevel, managerId) => {
         console.log(employeeId);
+
+
         localStorage.setItem("EID1", employeeId);
         localStorage.setItem("ELEVEL1", empLevel);
         localStorage.setItem("MID1", managerId);
     }
+
+
 
     const sorting = (col) => {
         if (order == "ASC") {
@@ -95,83 +98,143 @@ const AllEmployees = () => {
         return (
             <div>
                 <div class="container-xl">
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
-                <input
-                    type="text" placeholder="Search.." className="form-control"
-                    style={{ marginTop: 50, marginBottom: 50, width: "40%" }}
-                    onChange={(e) => {
-                        setsearchTerm(e.target.value);
-                    }}
-                />
-                <br />
-                
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></link>
+                    <br/>
+                    <h6 id="info1">CEO INFORMATION</h6>
+                    
+                    
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
 
-                            <th scope="col" onClick={() => sortingInt("employeeId")} >Employee ID</th>
-                            <th scope="col" >Photo</th>
-                            <th scope="col" onClick={() => sorting("name")}>Name</th>
-                            <th scope="col" onClick={() => sortingInt("Level")} >Level</th>
-                            <th scope="col" onClick={() => sorting("email")}>Email</th>
-                            <th scope="col" onClick={() => sorting("phone")}>Phone</th>
-                            <th scope="col" onClick={() => sortingInt("managerId")}>Manager ID</th>
+                                <th scope="col" >Employee ID</th>
+                                <th scope="col" >Photo</th>
+                                <th scope="col">Name</th>
+                                <th scope="col" >Level</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                
 
-                        </tr>
-                    </thead>
+                            </tr>
+                        </thead>
 
-                    {items.filter((val) => {
-                        if (searchTerm === "") {
-                            return val;
-                        } else if (
-                            val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            val.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            // val.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            val.employeeId.toString().includes(searchTerm.toString()) ||
-                            val.empLevel.toString().includes(searchTerm.toString()) ||
-                            val.managerId.toString().includes(searchTerm.toString())
+                        {Record.map(item => (
 
-                        ) {
-                            return val;
-                        }
-                    }).map(item => (
+                            <tr>
 
-                        <tr>
+                                <th scope="row">
+                                    {item.employeeId}
+                                </th>
+                                <td>
 
-                            <th scope="row">
-                                {item.employeeId}
-                            </th>
-                            <td>
+                                    <img src={item.icon} alt="ted" />
+                                </td>
+                                <td>
 
-                                <img src={item.icon} alt="ted"/>
-                            </td>
-                            <td>
+                                    {item.name}
+                                </td>
+                                <td>
+                                    CEO
+                                </td>
+                                <td>
+                                    {item.email}
+                                </td>
+                                <td>
+                                    {item.phone}
+                                </td>
+                                
 
-                                {item.name}
-                            </td>
-                            <td>
-                                {item.empLevel}
-                            </td>
-                            <td>
-                                {item.email}
-                            </td>
-                            <td>
-                                {item.phone}
-                            </td>
-                            <td>
-                                {item.managerId}
-                            </td>
-                            <td>
-                                <Link to="/AddEmp/">
-                                    <button type="button" onClick={() => setEid(item.employeeId, item.empLevel, item.managerId)} class="btn btn-outline-success btn-sm">Apply Leave</button>
-                                </Link>
-                            </td>
+                            </tr>
 
-                        </tr>
+                        ))}
 
-                    ))}
+                    </table>
+                    <br />
+                    <h6 id="info2">EMPLOYEE INFORMATION</h6>
+                    <input
+                        type="text" placeholder="Search.." className="form-control"
+                        style={{width: "40%" }}
+                        onChange={(e) => {
+                            setsearchTerm(e.target.value);
+                        }}
+                    />
+                    
+                    
+                    <br/>
 
-                </table></div>
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+
+                                <th scope="col" onClick={() => sortingInt("employeeId")} >Employee ID</th>
+                                <th scope="col" >Photo</th>
+                                <th scope="col" onClick={() => sorting("name")}>Name</th>
+                                {/* <th scope="col" onClick={() => sortingInt("Level")} >Level</th> */}
+                                <th scope="col" onClick={() => sorting("email")}>Email</th>
+                                <th scope="col" onClick={() => sorting("phone")}>Phone</th>
+                                <th scope="col" onClick={() => sortingInt("managerId")}>Manager ID</th>
+
+                            </tr>
+                        </thead>
+
+                        {items.filter((val) => {
+                            if (searchTerm === "") {
+                                return val;
+                            } else if (
+                                val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                val.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                // val.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                val.employeeId.toString().includes(searchTerm.toString()) ||
+                                val.empLevel.toString().includes(searchTerm.toString()) ||
+                                val.managerId.toString().includes(searchTerm.toString())
+
+                            ) {
+                                return val;
+                            }
+                        }).map(item => (
+
+                            <tr>
+
+                                <th scope="row">
+                                    {item.employeeId}
+                                </th>
+                                <td>
+
+                                    <img src={item.icon} alt="ted" />
+                                </td>
+                                <td>
+
+                                    {item.name}
+                                </td>
+                                {/* <td>
+                                    {item.empLevel}
+                                </td> */}
+                                <td>
+                                    {item.email}
+                                </td>
+                                <td>
+                                    {item.phone}
+                                </td>
+                                <td>
+
+                                    {item.managerId}
+
+
+                                </td>
+
+
+
+                                <td>
+                                    <Link to="/AddEmp/">
+                                        <button type="button" onClick={() => setEid(item.employeeId, item.empLevel, item.managerId)} class="btn btn-outline-success btn-sm">Apply Leave</button>
+                                    </Link>
+                                </td>
+
+                            </tr>
+
+                        ))}
+
+                    </table></div>
                 <br /><br /><br /><br /><br /><br /><br /><br />
                 <p>-</p>
 

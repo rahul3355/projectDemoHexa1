@@ -4,3 +4,9 @@ table, th, td, tr {
     text-align: center;
     vertical-align: bottom;
   }
+
+#info1, #info2 {
+  color: aliceblue;
+  font-weight: 700;
+  text-align: left;
+}

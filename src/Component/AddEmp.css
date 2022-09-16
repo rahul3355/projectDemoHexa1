@@ -1,10 +1,22 @@
 #leaveForm {
-    display: flex;
-    margin-left: 450px;
     align-items: center;
+    background-color: white;
+    
 }
 
-#leabe{
-    padding: 10px;
-    padding-left: 0px;
+.dropd {
+    width: min-content;
+}
+
+.cm {
+    padding-left: 50px;
+}
+
+#idl {
+    padding-left: 50px;
+}
+
+#info2 {
+    color: rgba(0, 0, 0, 0.656);
+    text-align: center;
 }
